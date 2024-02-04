@@ -142,6 +142,10 @@ footer hr {
     font-size: .9rem;
 }
 
+#map {
+    height: 400px;
+    width: 60vh;
+}
 
 
 li img {

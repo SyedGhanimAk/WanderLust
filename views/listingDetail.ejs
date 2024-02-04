@@ -1,5 +1,7 @@
 <% layout('layouts/boilerplate') -%>
 
+
+
     <body>
         <div class="row d-flex justify-content-center">
             <div class="col-10 col-lg-8 col-xl-6 ">
@@ -72,14 +74,14 @@
                                 <label for="first-rate5" title="Amazing">5 stars</label>
                               </fieldset>
                             <label for="comments" class="form-label">Comments</label>
-                            <textarea class="form-control" name="comments" id="comments" rows="3" required></textarea>
+                            <textarea class="form-control" name="comments" id="comments" rows="4" required></textarea>
                             <div class="invalid-feedback">
                                 Please give a comment
                             </div>
 
                             <button type="submit" class="btn mt-3">Submit</button>
-                        </form>
-                        <%}%>
+                        </form> <%}%>
+
                             <div class="showReviews">
                                 <% if(result.reviews.length) {%>
                                     <hr> <br>
@@ -94,10 +96,11 @@
                                                         <p class="small card-text">
                                                             @<%=review.createdBy.username%>,
                                                             <small class="text-muted"><%=review.createdAt.toLocaleDateString('en-US',
-                                                                {day: "numeric" , year: 'numeric' , month: 'short' })%></small>
+                                                                {day: "numeric" , year: 'numeric' , month: 'short' })%>
+                                                                </small>
                                                         
                                                         </p>
-                                                                <p class="card-text starability-result" data-rating= <%=review.rating%>>
+                                                    <p class="card-text starability-result" data-rating= <%=review.rating%>>
                                                                   </p>
                                                      
                                                         <p class="card-text mb-3">
@@ -114,17 +117,38 @@
                                                             </form>
                                                             <%}%>
                                                     </div>
-                                                </div>
-
-
-                                                <%}%>
+                                                </div><%}%>
                                         </div>
                             </div>
+                </div>
+                <div class="MapBox">
+                <hr><br>
+                <h4 >Where you’ll be</h4>
+                <br>
+                <div id="map"></div>
+                
                 </div>
 
             </div>
 
         </div>
+       
+    <script>
+        // map
+        let lng="<%=result.geometry.coordinates[0]%>";
+        let lat="<%=result.geometry.coordinates[1]%>";
+        mapboxgl.accessToken = "<%=process.env.MAP_TOKEN%>";
+    const map = new mapboxgl.Map({
+    container: 'map', // container ID
+    
+    center: [lng,lat], // starting position [lng, lat]
+    zoom: 12 // starting zoom
+    
+    });
+    const marker = new mapboxgl.Marker({ color: '#fe424d' }).setLngLat([lng, lat]).setPopup(new mapboxgl.Popup({offset: 25})
+.setHTML("<h4><%=result.title%></h4><p>Exact location is provided after booking.</p>")
+.setMaxWidth("300px")).addTo(map);
+    </script>
 
         <script src="/js/script.js"></script>
     </body>
