@@ -142,9 +142,11 @@ footer hr {
     font-size: .9rem;
 }
 
+
 #map {
-    height: 400px;
-    width: 60vh;
+    height: 24rem;
+ 
+
 }
 
 
@@ -185,7 +187,7 @@ li img {
 
 .card img {
     height: 18rem;
-    border-radius: 12px;
+    border-radius: 1rem;
 }
 
 .card-body {
@@ -193,7 +195,7 @@ li img {
 }
 
 .card-img-top:hover {
-    opacity: .75;
+    opacity: .85;
 }
 
 .btn {
