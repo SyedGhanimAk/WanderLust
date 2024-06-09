@@ -14,3 +14,6 @@ WanderLust is a global hotel exploration platform inspired by Airbnb. It allows 
 2. Add Listings: Create an account to add new hotel listings.
 3. Reviews: Logged-in users can write and read reviews for each hotel.
 4. Map: Use the map feature to find exact hotel location.
+
+# Direct link to project
+https://wanderlust-project-kobt.onrender.com/listings
